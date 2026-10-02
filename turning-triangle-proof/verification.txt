@@ -1,0 +1,36 @@
+Verification date: 2026-10-02
+Lean: 4.19.0, commit 6caaee842e94
+mathlib: v4.19.0
+
+The main two-triangle proof is in TurningTriangleProof.lean:
+  Turning.lem_turning_by_triangles
+  Turning.lem_turning_by_triangles_isometric_copy
+
+All 11 proof modules compiled successfully, exit status 0, no diagnostics.
+Audit.lean also completed successfully. See build-log.txt for actual output.
+
+The manuscript's argument is followed: equal-leg right triangles, the exact
+cosh Taylor-series comparison, beta_i>2pi/9, strict separation from disjointness,
+and contradiction with beta<=4pi/15. The needed correction s=x*epsilon is
+explicit. There is no hgeometry hypothesis, sorry, or additional axiom.
+The earlier 7/15 intersection theorem is not invoked by this proof.
+
+The main theorem and its geometric/analytic helper theorems have only:
+  propext, Classical.choice, Quot.sound
+as kernel axiom dependencies. Audit.lean reproduces the axiom checks.
+
+Standard Lean/elan installation, from this directory:
+  lake update
+  lake exe cache get Mathlib.Analysis.SpecialFunctions.Trigonometric.Series Mathlib.Data.Real.Pi.Bounds Mathlib.Tactic.FieldSimp Mathlib.Tactic.Linarith Mathlib.Tactic.Positivity Mathlib.Analysis.Complex.UpperHalfPlane.Metric
+  lake build
+  lake env lean Audit.lean
+
+A persistent local compiler is also available here (excluded from the ZIP):
+  .toolchain/lean-project.sh TurningTriangleProof.lean
+  .toolchain/lean-project.sh Audit.lean
+It invokes the official Lean binary with pinned cached mathlib dependencies.
+
+The formalization covers the explicit inward local-grid construction and its
+images under a supplied hyperbolic isometry. It does not prove a separate
+normalization theorem for arbitrary pre-existing finite segments l,m.
+See construction-notes.txt for the exact construction and proof correspondence.

@@ -1,0 +1,67 @@
+THE TWO-RIGHT-TRIANGLE TURNING PROOF
+
+Main source: TurningTriangleProof.lean
+Main theorem: Turning.lem_turning_by_triangles
+Transport to any supplied isometric frame:
+  Turning.lem_turning_by_triangles_isometric_copy
+
+This follows the manuscript's two-triangle contradiction, rather than the
+alternative 7/15 argument in LocalGrid.lean. There is no hgeometry hypothesis.
+
+Construction and the necessary index correction
+
+The supplied figure specifies inward perpendiculars: a=v, b lies on outgoing m,
+and e lies on the extension of incoming l. The angle between the two forward
+rays is beta=pi-alpha. The full perpendicular segments have length 2n^2 epsilon.
+The source fixes n>=2 and epsilon=1/(4n^8).
+
+For each x in {1,...,n^2+1}, put s=x epsilon and choose auxiliary c,d at inward
+distance s from the two attachment points. This is possible because
+  s <= (n^2+1)epsilon <= 2n^2 epsilon.
+Then all four triangle legs have length s. The manuscript's equality of all
+four lengths with (n^2+1)epsilon is true only at the largest index and is
+replaced by this corrected statement. The bound s<=1/2 remains valid.
+
+Proof correspondence
+
+1. EqualLegTriangle.lean proves the two legs really have hyperbolic length s,
+   the foot angle is pi/2, and each diagonal geodesic reaches its endpoint at
+   positive time. Actual unit tangent vectors determine the vertex angles:
+     beta_1=beta_2=arctan(tanh(s)/sinh(s))=arctan(1/cosh(s)).
+   Reflection supplies the second triangle.
+
+2. TurningSeries.lean proves the exact Taylor-series comparison in the text:
+     cosh(s) = sum s^(2k)/(2k)!
+             <= sum (s^2/2)^k = 1/(1-s^2/2) <= 8/7.
+   The geometric-series convergence condition is explicit and proved.
+
+3. The original arctangent identity is retained:
+     arctan(7/8)=pi/4-arctan(1/15)>pi/4-1/15>2pi/9.
+   Hence beta_1 and beta_2 both exceed 2pi/9.
+
+4. TriangleSeparation.lean proves that disjoint inward segments force
+     beta_1+beta_2<beta.
+   This is derived from the explicit geodesics, tangent monotonicity and an
+   intermediate-value argument. It does not invoke the numerical angle bound,
+   the earlier 7/15 argument, or an already proved turning-intersection theorem.
+
+5. TurningTriangleProof.lean finishes the contradiction:
+     beta > beta_1+beta_2 > 4pi/9 > 4pi/15 >= beta.
+
+Formal model and scope
+
+The sets lGrid and mGrid are points of mathlib's UpperHalfPlane with its actual
+Poincare metric. HyperbolicMetric.lean proves exact distances for the radial
+and perpendicular parameterizations. Angles use the hyperboloid unit-tangent
+formula arccos(-lorentz(v,w)), with actual derivatives and diagonal geodesics
+certified by HyperbolicAngles.lean and EqualLegTriangle.lean.
+
+The normalized construction and all its images under a supplied hyperbolic
+isometry are covered. A separate theorem normalizing arbitrary pre-existing
+finite segments l,m into this frame is not included. Attachment points must
+exist on their supporting geodesics, as stipulated in the construction.
+The rest of the graph reduction, gadget grids and propagation lemmas are not
+part of this turning lemma.
+
+Earlier files remain as dependencies and historical alternatives. In particular,
+the conditional wrappers in Turning.lean are not used by the new theorem.

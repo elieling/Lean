@@ -1,0 +1,38 @@
+Turning.lean: exit 0
+
+CenteredBounds.lean: exit 0
+
+Hyperboloid.lean: exit 0
+
+HyperbolicMetric.lean: exit 0
+
+HyperbolicAngles.lean: exit 0
+
+CenteredTurning.lean: exit 0
+
+LocalGrid.lean: exit 0
+
+TurningSeries.lean: exit 0
+
+TriangleSeparation.lean: exit 0
+
+EqualLegTriangle.lean: exit 0
+
+TurningTriangleProof.lean: exit 0
+
+'Turning.lem_turning_by_triangles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.lem_turning_by_triangles_isometric_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.cosh_le_geometric_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.twice_triangle_angle_lt_turning_of_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.Hyperboloid.equalLeg_angle_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.Hyperboloid.equalLeg_endpoint_on_ray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.lem_turning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.lem_turning_isometric_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.upperLine_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.lowerLine_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.upperLine_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.lowerLine_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.grid_interior_angle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.Hyperboloid.perpendicular_angle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.Hyperboloid.isometry_perp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Turning.Hyperboloid.isometry_mirror_perp' depends on axioms: [propext, Classical.choice, Quot.sound]
